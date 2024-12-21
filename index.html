@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NOTHING API | ENDPOINT</title>
+    <style>
+        body {
+            background-color: #f0f8ff; /* آبی کم‌رنگ */
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            font-family: Arial, sans-serif;
+            overflow: hidden;
+        }
+        .time {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            font-size: 18px;
+            background: #fff;
+            padding: 5px 10px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+        .container {
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        .water {
+            position: absolute;
+            bottom: 0;
+            width: 100%;
+            height: 50%;
+            background: #0099ff;
+            animation: water-drop 10s ease-out forwards;
+        }
+        @keyframes water-drop {
+            from {
+                height: 50%;
+            }
+            to {
+                height: 0%;
+            }
+        }
+        .message {
+            font-size: 24px;
+            font-weight: bold;
+            color: black;
+            margin: 10px 0;
+            opacity: 0;
+            animation: fade-in 2s forwards;
+        }
+        @keyframes fade-in {
+            from {
+                opacity: 0;
+            }
+            to {
+                opacity: 1;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="time" id="current-time"></div>
+    <div class="container">
+        <div class="water"></div>
+        <div id="messages"></div>
+    </div>
+
+    <script>
+        // نمایش ساعت دقیق
+        function updateTime() {
+            const now = new Date();
+            const timeElement = document.getElementById('current-time');
+            timeElement.textContent = now.toLocaleTimeString();
+        }
+        setInterval(updateTime, 1000);
+        updateTime();
+
+        // نمایش پیام‌ها
+        const messages = [
+            "Fetching API Data...",
+            "Connecting to Nothing APIs...",
+            "Loading APIS Endpoint...",
+            "Loading to connect APIS Endpoint!",
+            "Complete!"
+        ];
+        const messagesContainer = document.getElementById('messages');
+        messages.forEach((msg, index) => {
+            setTimeout(() => {
+                const message = document.createElement('div');
+                message.textContent = msg;
+                message.className = 'message';
+                message.style.animationDelay = `${index * 2}s`;
+                messagesContainer.appendChild(message);
+            }, index * 2500);
+        });
+
+        // انتقال به URL مقصد
+        setTimeout(() => {
+            window.location.href = '../docs';
+        }, 15000);
+    </script>
+</body>
+</html>

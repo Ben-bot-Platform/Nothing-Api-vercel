@@ -1,0 +1,719 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NOTHING API | ENDPOINT</title>
+    <style>
+        body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* ارتفاع حداقل صفحه 100vh */
+}
+
+.container {
+    flex-grow: 1; /* فضای خالی بین محتوا و فوتر */
+}
+
+footer {
+    text-align: center;
+    font-size: 0.9rem;
+    color: #888;
+    background: rgba(30, 30, 30, 0.8);
+    backdrop-filter: blur(5px);
+    padding: 10px 0;
+    position: relative; /* فوتر در پایین صفحه خواهد بود */
+}
+
+        /* استایل برای ویدیو */
+        .video-background {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover; /* ویدیو را در کل صفحه تنظیم می‌کند */
+            z-index: -1; /* ویدیو را در پشت سایر عناصر قرار می‌دهد */
+        }
+
+header22 {
+        background-color: #075e54;
+        padding: 20px;
+        margin: 20px;
+        border-radius: 15px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        width: 80%;
+        max-width: 400px;
+        font-size: 1.5rem;
+        font-weight: bold;
+        color: #ffd700;
+        text-align: center;
+    }
+        header {
+            background: rgba(30, 30, 30, 0.8);
+            padding: 20px;
+            text-align: center;
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #ffd700;
+            backdrop-filter: blur(5px);
+            position: relative; /* برای نمایش روی ویدیو */
+            z-index: 1; /* بالاتر از ویدیو نمایش داده شود */
+        }
+        
+        p {
+            color: black;
+            margin-left: 40px;
+            font-weight: bold;
+          }
+          
+        h1 {
+            text-align: center;
+            color: yellow;
+            font-weight: bold;
+        }
+    
+        h3 {
+            color: yellow;
+            margin-left: 40px;
+            font-weight: bold;
+          }
+          h4 {
+            color: white;
+            font-size: 22px;
+            margin-top: 30px;
+            margin-left: 65px;
+            font-weight: bold;
+          }
+
+        .container {
+    padding: 10px;
+    text-align: center;
+    min-height: 100vh; /* برای اطمینان از اینکه محتوا همیشه فضای کامل صفحه را می‌گیرد */
+    box-sizing: border-box;
+}
+
+
+        .info {
+            margin: 20px 0;
+            font-size: 1.2rem;
+            background: rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            border-radius: 10px;
+            display: inline-block;
+        }
+
+        .menu-icon {
+            position: fixed;
+            top: 35px;
+            left: 20px;
+            cursor: pointer;
+            z-index: 1000;
+        }
+        
+   ‌ ‌   .statusa {
+            color: #28a745; /* رنگ سبز */
+            font-weight: bold;
+        }
+
+        .menu-icon div {
+            width: 30px;
+            height: 4px;
+            background: white;
+            margin: 6px 0;
+            border-radius: 2px;
+        }
+
+        
+
+        .menu a {
+            display: block;
+            color: white;
+            text-decoration: none;
+            margin: 50px 0;
+            font-size: 1rem;
+        }
+
+        .menu a:hover {
+            color: #e91e63;
+        }
+
+        
+        
+
+/* استایل برای منو */
+.menu {
+    position: fixed;
+    top: 0;
+    left: -300px;
+    width: 250px;
+    height: 100%;
+    background: rgba(18, 18, 18, 0.9);
+    padding: 20px;
+    transition: left 0.3s ease;
+    box-shadow: 22px 0 5px rgba(0, 0, 0, 0.5);
+}
+
+/* استایل برای آیتم‌های منو */
+.menu-item {
+    display: block;
+    color: white;
+    text-decoration: none;
+    margin: 10px 0;  /* فاصله بین آیتم‌ها کاهش یافته است */
+    font-size: 1rem;
+    position: relative;
+}
+
+/* خط زرد زیر آیتم‌های منو */
+.menu-item::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 2px;
+    background-color: #ffd700; /* رنگ زرد */
+}
+
+.announcement {
+    position: absolute;
+    top: -100px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    font-size: 1rem;
+    text-align: center;
+    color: #333;
+    box-shadow: 0px 10px 20px rgba(0, 0, 0, 0.3);
+    animation: fall 1.5s ease-in-out forwards;
+    width: 80%;
+}
+
+.announcement .title {
+    font-size: 2rem;
+    font-weight: bold;
+    color: #4caf50;
+}
+
+.announcement .icon {
+    font-size: 6rem;
+    color: #4caf50;
+    text-shadow: 0 0 5px rgba(0, 0, 0, 0.3); /* سایه برای روشنایی */
+    -webkit-text-stroke: 2px black; /* خط سیاه دور متن */
+    text-stroke: 2px black; /* برای مرورگرهای پشتیبانی‌کننده */
+    animation: tapEffect 1.2s ease-in-out; /* انیمیشن ضربه زدن */
+    transform-origin: center;
+}
+
+.announcement p {
+    margin: 0;
+    padding-bottom: 10px;
+}
+
+.announcement button {
+    background-color: #ff5722;
+    border: none;
+    color: white;
+    font-size: 1rem;
+    padding: 10px 20px;
+    cursor: pointer;
+    border-radius: 5px;
+    display: block;
+    margin: 0 auto;
+}
+
+.announcement button:hover {
+    background-color: #e91e63;
+}
+
+.announcement a {
+    color: #ff5722;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.announcement a:hover {
+    text-decoration: underline;
+}
+
+/* انیمیشن افتادن */
+@keyframes fall {
+    0% {
+        top: -100px;
+        transform: translateX(-50%) rotateX(180deg);
+    }
+    50% {
+        top: 50%;
+        transform: translateX(-50%) rotateX(90deg);
+    }
+    100% {
+        top: 30%;
+        transform: translateX(-50%) rotateX(0deg);
+    }
+}
+
+/* انیمیشن ضربه زدن علامت */
+@keyframes tapEffect {
+    0% {
+        transform: scale(0.8) rotate(0deg); /* کوچک و بدون چرخش */
+    }
+    20% {
+        transform: scale(1.1) rotate(-10deg); /* کمی بزرگ و چرخش به چپ */
+    }
+    40% {
+        transform: scale(1) rotate(10deg); /* بازگشت به اندازه اصلی و چرخش به راست */
+    }
+    60% {
+        transform: scale(1.1) rotate(-5deg); /* بزرگ‌تر و چرخش به چپ */
+    }
+    100% {
+        transform: scale(1) rotate(0deg); /* به حالت اصلی بازگردد */
+    }
+}
+.card {
+            background-color: #075e54;
+            padding: 20px;
+            margin-top: 20px;
+            margin: 0, 25px;
+            border-radius: 40px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+        
+.video-bg {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: -1;
+        }
+.try-button {
+            background-color: #6f42c1;
+            color: #fff;
+            border: none;
+            font-weight: bold;
+            padding: 5px 10px;
+            cursor: pointer;
+            border-radius: 4px;
+            transition: background-color 0.3s ease;
+        }
+      
+/* استایل برای عنوان‌ها */
+.api-section-title {
+    font-size: 1.5rem;
+    color: #ffd700;  /* رنگ طلایی */
+    margin-bottom: 15px;
+    font-weight: bold;
+    text-align: left;
+}
+
+<header>NOTHING APIS</header>
+
+/* استایل برای علامت خروج */
+#closeMenu {
+    font-size: 2rem;
+    color: white;
+    text-decoration: none;
+    position: absolute;
+    top: 10px;
+    right: 20px;
+}
+
+.status-inactive {
+            color: #dc3545;
+        }
+.status-active {
+            color: #28a745;
+        }
+/* وقتی منو باز است */
+.menu.open {
+    left: 0;
+}
+        .api-list {
+            margin: 20px 0;
+            padding: 20px;
+            background: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+            text-align: left;
+            font-size: 1rem;
+            overflow-y: auto;
+            max-height: 500px;
+        }
+
+        .api-list table {
+            width: 100%;
+            color: white;
+        }
+
+        .api-list th, .api-list td {
+            padding: 10px;
+            text-align: left;
+        }
+
+        .api-list th {
+            background: rgba(50, 50, 50, 0.8);
+        }
+
+        .api-list td a {
+            color: #008cff;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+	<video class="video-bg" autoplay muted loop>
+        <source src="https://files.giftedtech.my.id/file/gifted-api.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+    <!-- اعلامیه -->
+    <div class="announcement" id="announcement">
+    <p class="icon">✓</p>
+    <p class="title">NOTHING REST APIS</p>
+    <p>Welcome to NOTHING APIS. <a href="https://wa.me/+93744215959">Contact admin</a> for premium API key.</p>
+    <button onclick="closeAnnouncement()">GOT IT</button>
+</div>
+    
+    <div class="header-container" style="display: flex; align-items: center; justify-content: center;">
+
+    <header22 style="
+    background-color: #075e54;
+    padding: 10px;
+    margin: 20px;
+    border-radius: 15px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+    width: 80%;
+    max-width: 400px;
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: #ffd700;
+    text-align: center;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+">
+    <span style="transform: translateX(50px);">NOTHING APIS</span>
+    <img src="https://files.catbox.moe/4i7dp7.jpg" alt="Profile" style="
+        width: 50px;
+        height: 50px;
+        border-radius: 50%;
+        object-fit: cover;
+        border: 3px solid #ffd700;
+    " />
+</header22>
+
+</div>
+    
+    <script>
+        // تابع برای پنهان کردن اعلامیه
+        function closeAnnouncement() {
+            const announcement = document.getElementById('announcement');
+            announcement.style.display = 'none';
+        }
+    </script>
+
+    <!-- منو -->
+<div class="menu" id="menu">
+    <a href="../docs" target="_blank" class="menu-item first">Dashboard</a>
+    <a href="javascript:void(0)" onclick="loadContent('download')" class="menu-item">DOWNLOAD APIS</a>
+    <a href="javascript:void(0)" onclick="loadContent('ai')" class="menu-item">AI APIS</a>
+    <a href="javascript:void(0)" onclick="loadContent('search')" class="menu-item">SEARCH APIS</a>
+    <a href="javascript:void(0)" onclick="loadContent('tools')" class="menu-item">TOOLS & SHORTENER APIS</a>
+    <a href="../contact" target="_blank" class="menu-item last">Contact a Nothing</a>
+    <a href="javascript:void(0)" onclick="loadContent('upload')" class="menu-item">UPLOAD FILE</a>
+    <!-- علامت خروج (علامت غلط) -->
+    <a href="javascript:void(0)" onclick="toggleMenu()" id="closeMenu" style="position: absolute; top: 10px; right: 20px; font-size: 2rem; color: white; text-decoration: none;">×</a>
+</div>
+
+    <!-- آیکون منو -->
+    <div class="menu-icon" onclick="toggleMenu()">
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+
+    <!-- محتوا -->
+<div class="container" id="content">
+    <!-- پیام جدید بالای IP -->
+    <div class="card">
+                <h3>YOUR IP ADDRESS</h3>
+                <p id="ip">Loading...</p>
+            </div>
+            <div class="card">
+                <h3>YOUR BATTERY</h3>
+                <p id="battery">Loading...</p>
+            </div>
+            <div class="card">
+                <h3>SERVER RUNTIME</h3>
+                <p id="runtime">Loading...</p>
+            </div>
+            <div class="card">
+                <h3>TODAY'S DATE</h3>
+                <p id="date">Loading...</p>
+            </div>
+            <div class="card">
+                <h3>TIME NOW</h3>
+                <p id="time">Loading...</p>
+            </div>
+</div>
+
+<footer style="
+    background-color: #121212; 
+    color: #ffffff; 
+    text-align: center; 
+    padding: 20px 10px; 
+    font-size: 0.9rem; 
+    border-top: 1px solid #333;">
+    <a href="https://whatsapp.com/channel/0029Vasu3qP9RZAUkVkvSv32" 
+       style="color: #00ff7f; text-decoration: none; font-weight: bold; border-bottom: 2px solid #00ff7f;">
+        JOIN WHATSAPP CHANNEL
+    </a>
+    <br><br>
+    © <script>document.write(new Date().getFullYear());</script> MADE BY 
+    <a href="https://github.com/TraderAn-King" 
+       style="color: #00ff7f; text-decoration: none; font-weight: bold; border-bottom: 2px solid #00ff7f;">
+        NOTHING TECH
+    </a>
+</footer>
+
+    <script>
+        function toggleMenu() {
+            const menu = document.getElementById('menu');
+            menu.classList.toggle('open');
+        }
+
+        function loadContent(page) {
+    const content = document.getElementById('content');
+    if (page === 'download') {
+        content.innerHTML = `
+            <div class="api-list">
+                <h4>Downloader Api Endpoints</h4>
+                <table>
+                    <tr>
+                        <th>Name</th>
+                        <th>Type</th>
+                        <th>Status</th>
+                        <th>Method</th>
+                        <th>Test</th>
+                    </tr>
+                    <tr>
+                        <td>Api Key Checker</td>
+                        <td>apikey</td>
+                        <td class="status-active">Active</td>
+                        <td>GET</td>
+                        <td>
+                            <a href="javascript:void(0)" onclick="requestApiKeyAndOpenLink('../api/checker?apikey=APIKEY')" class="try-button">CHECK</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>YouTube ytmp3</td>
+                        <td>Url & apikey</td>
+                        <td class="status-active">Active</td>
+                        <td>GET</td>
+                        <td>
+                            <a href="javascript:void(0)" onclick="requestApiKeyAndOpenLink('../api/downloader/ytmp3?url=https://youtube.com/watch?v=jA3XkD8k8-A&apikey=APIKEY')" class="try-button">TEST</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>YouTube ytmp4</td>
+                        <td>Url & apikey</td>
+                        <td class="status-active">Active</td>
+                        <td>GET</td>
+                        <td>
+                            <a href="javascript:void(0)" onclick="requestApiKeyAndOpenLink('../api/downloader/ytmp4?url=https://youtube.com/watch?v=jA3XkD8k8-A&apikey=APIKEY')" class="try-button">TEST</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Facebook</td>
+                        <td>Url & apikey</td>
+                        <td class="status-active">Active</td>
+                        <td>GET</td>
+                        <td>
+                            <a href="javascript:void(0)" onclick="requestApiKeyAndOpenLink('../api/downloader/fbdl?url=https://www.facebook.com/reel/1182784656117330?mibextid=rS40aB7S9Ucbxw6v&apikey=APIKEY')" class="try-button">TEST</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Instagram</td>
+                        <td>Url & apikey</td>
+                        <td class="status-active">Active</td>
+                        <td>GET</td>
+                        <td>
+                            <a href="javascript:void(0)" onclick="requestApiKeyAndOpenLink('../api/downloader/ingdl?url=https://www.instagram.com/p/CyIqjWusPec/?igsh=N2RqamN3cHR2eG4z&apikey=APIKEY')" class="try-button">TEST</a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        `;
+    }
+    if (page === 'ai') {
+        content.innerHTML = `
+            <div class="api-list">
+                <h4>AI Api Endpoints</h4>
+                <table>
+                    <tr>
+                        <th>Name</th>
+                        <th>Type</th>
+                        <th>Status</th>
+                        <th>Method</th>
+                        <th>Test</th>
+                    </tr>
+                    <tr>
+                        <td>Api Key Checker</td>
+                        <td>apikey</td>
+                        <td class="status-active">Active</td>
+                        <td>GET</td>
+                        <td>
+                            <a href="javascript:void(0)" onclick="requestApiKeyAndOpenLink('../api/checker?apikey=APIKEY')" class="try-button">CHECK</a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        `;
+    }
+    if (page === 'tools') {
+        content.innerHTML = `
+            <div class="api-list">
+                <h4>Tools Api Endpoints</h4>
+                <table>
+                    <tr>
+                        <th>Name</th>
+                        <th>Type</th>
+                        <th>Status</th>
+                        <th>Method</th>
+                        <th>Test</th>
+                    </tr>
+                    <tr>
+                        <td>Api Key Checker</td>
+                        <td>apikey</td>
+                        <td class="status-active">Active</td>
+                        <td>GET</td>
+                        <td>
+                            <a href="javascript:void(0)" onclick="requestApiKeyAndOpenLink('../api/checker?apikey==APIKEY')" class="try-button">CHECK</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Create Qr</td>
+                        <td>text/url & apikey</td>
+                        <td class="status-active">Active</td>
+                        <td>BUFFER</td>
+                        <td>
+                            <a href="javascript:void(0)" onclick="requestApiKeyAndOpenLink('../api/tools/qrcode?text=Hello&apikey=APIKEY')" class="try-button">TEST</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Fancy Text</td>
+                        <td>text & apikey</td>
+                        <td class="status-inactive">Inactive</td>
+                        <td>GET</td>
+                        <td>
+                            <a href="javascript:void(0)" onclick="requestApiKeyAndOpenLink('../api/tools/font-txt?text=Hello&apikey=APIKEY')" class="try-button">TEST</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Full Ssweb</td>
+                        <td>url & apikey</td>
+                        <td class="status-inactive">Inactive</td>
+                        <td>BUFFER</td>
+                        <td>
+                            <a href="javascript:void(0)" onclick="requestApiKeyAndOpenLink('../api/tools/ssweb?url=https://nothing-endpoint-e82e9f07ad78.herokuapp.com&apikey=APIKEY')" class="try-button">TEST</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Tinyurl</td>
+                        <td>url & apikey</td>
+                        <td class="status-active">Active</td>
+                        <td>GET</td>
+                        <td>
+                            <a href="javascript:void(0)" onclick="requestApiKeyAndOpenLink('../api/tools/tinyurl?url=https://nothing-endpoint-e82e9f07ad78.herokuapp.com&apikey=APIKEY')" class="try-button">TEST</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Shorturl</td>
+                        <td>url & apikey</td>
+                        <td class="status-inactive">Inactive</td>
+                        <td>GET</td>
+                        <td>
+                            <a href="javascript:void(0)" onclick="requestApiKeyAndOpenLink('../api/tools/shorturl?url=https://nothing-endpoint-e82e9f07ad78.herokuapp.com&apikey=APIKEY')" class="try-button">TEST</a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        `;
+    }
+    if (page === 'search') {
+        content.innerHTML = `
+            <div class="api-list">
+                <h4>Search Api Endpoints</h4>
+                <table>
+                    <tr>
+                        <th>Name</th>
+                        <th>Type</th>
+                        <th>Status</th>
+                        <th>Method</th>
+                        <th>Test</th>
+                    </tr>
+                    <tr>
+                        <td>Api Key Checker</td>
+                        <td>apikey</td>
+                        <td class="status-active">Active</td>
+                        <td>GET</td>
+                        <td>
+                            <a href="javascript:void(0)" onclick="requestApiKeyAndOpenLink('../api/checker?apikey=APIKEY')" class="try-button">CHECK</a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>YouTube search</td>
+                        <td>text & apikey</td>
+                        <td class="status-active">Active</td>
+                        <td>GET</td>
+                        <td>
+                            <a href="javascript:void(0)" onclick="requestApiKeyAndOpenLink('../api/downloader/ytsearch?text=Radhe title stark&apikey=APIKEY')" class="try-button">TEST</a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+        `;
+    }
+}
+
+        function requestApiKeyAndOpenLink(apiUrl) {
+            const apiKey = prompt("Please enter your API Key:");
+            if (!apiKey) {
+                alert("API Key is required!");
+                return;
+            }
+            const finalUrl = apiUrl.replace("APIKEY", apiKey);
+            window.open(finalUrl, "_blank");
+        }
+
+        setInterval(() => {
+            const now = new Date();
+            document.getElementById('time').textContent = `${now.toLocaleTimeString()}`;
+            document.getElementById('date').textContent = `${now.toDateString()}`;
+        }, 1000);
+
+        navigator.getBattery().then(battery => {
+            document.getElementById('battery').textContent = `${Math.round(battery.level * 100)}% (${battery.charging ? 'Charging' : 'Discharging'})`;
+        });
+
+        fetch('https://api64.ipify.org?format=json').then(response => response.json()).then(data => {
+            document.getElementById('ip').textContent = `${data.ip}`;
+        });
+
+        let startTime = Date.now();
+        setInterval(() => {
+            const runtime = Math.floor((Date.now() - startTime) / 1000);
+            const hours = Math.floor(runtime / 3600);
+            const minutes = Math.floor((runtime % 3600) / 60);
+            const seconds = runtime % 60;
+            document.getElementById('runtime').textContent = `${hours}:${minutes}:${seconds}`;
+        }, 1000);
+    </script>
+</body>
+</html>
