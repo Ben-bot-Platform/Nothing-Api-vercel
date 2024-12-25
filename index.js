@@ -4,7 +4,8 @@ const gifted = require('gifted-dls');
 const axios = require('axios');
 const ytdl = require('ytdl-core');
 const ytSearch = require('yt-search');
-const figlet = require('figlet');  // برای استفاده از فونت‌های مختلف
+const figlet = require('figlet');
+const { chromium } = require('playwright');
 const fg = require('api-dylux'); //
 const fs = require('fs');
 const path = require('path');
@@ -49,6 +50,29 @@ const checkUserLimit = (apikey) => {
     return apiKeyData;
 };
 
+//TEMP MAIL
+// DOC API
+app.get('/docs', (req, res) => {
+    res.sendFile(path.join(__dirname, 'index.html'));
+});
+app.get('/changelog', (req, res) => {
+    res.sendFile(path.join(__dirname, 'Updates.html'));
+});
+app.get('/contact', (req, res) => {
+    res.sendFile(path.join(__dirname, 'contact.html'));
+});
+app.get('/doc', (req, res) => {
+    res.sendFile(path.join(__dirname, 'docs.html'));
+});
+app.get('/ai', (req, res) => {
+    res.sendFile(path.join(__dirname, 'ai.html'));
+});
+app.get('/download', (req, res) => {
+    res.sendFile(path.join(__dirname, 'download.html'));
+});
+app.get('/tools', (req, res) => {
+    res.sendFile(path.join(__dirname, 'tools.html'));
+});
 // مسیر بررسی وضعیت API
 app.get('/api/checker', (req, res) => {
     const apikey = req.query.apikey;
@@ -216,7 +240,135 @@ app.get('/api/apikeychange/reset', (req, res) => {
         apikey
     }));
 });
+//TEMP MAIL
+// متغیر برای ذخیره ایمیل‌های ایجاد شده
+const tempEmails = [];
+app.get('/api/tools/tempmail', async (req, res) => {
+    const apikey = req.query.apikey; // دریافت API Key از درخواست
 
+    // بررسی وجود API Key در لیست
+    if (!apikey || !apiKeys[apikey]) {
+        return res.status(401).json({
+            status: false,
+            message: 'Invalid or missing API key.',
+        });
+    }
+
+    const keyData = checkUserLimit(apikey); // بررسی محدودیت‌های کاربر
+
+    // بررسی استفاده از محدودیت
+    if (keyData.used >= keyData.limit) {
+        return res.status(403).json({
+            status: false,
+            message: 'API key usage limit exceeded.',
+        });
+    }
+
+    // افزایش مقدار `used` برای کلید و ذخیره‌سازی
+    keyData.used += 1;
+    saveApiKeys(apiKeys);
+
+    try {
+        // تولید ایمیل
+        const response = await axios.get('https://www.1secmail.com/api/v1/?action=genRandomMailbox');
+        const email = response.data[0];
+        
+        // ذخیره ایمیل در متغیر
+        tempEmails.push(email);
+
+        // بازگشت ایمیل تولید شده
+        const result = {
+            type: 'email',
+            apikey: apikey,
+            email: email,
+        };
+
+        res.setHeader('Content-Type', 'application/json');
+        res.send(JSON.stringify({
+            status: true,
+            creator: 'Nothing-Ben',
+            result: result,
+        }, null, 4)); // مرتب کردن JSON با فاصله 4
+    } catch (error) {
+        res.status(500).json({
+            status: false,
+            message: 'Error creating temporary email.',
+            error: error.message,
+        });
+    }
+});
+// مسیر برای بررسی Inbox ایمیل
+app.get('/api/tools/tempmail-inbox', async (req, res) => {
+    const apikey = req.query.apikey; // دریافت API Key از درخواست
+    const email = req.query.inbox;  // ایمیل موردنظر برای بررسی
+
+    // بررسی وجود API Key
+    if (!apikey || !apiKeys[apikey]) {
+        return res.status(401).json({
+            status: false,
+            message: 'Invalid or missing API key.',
+        });
+    }
+
+    const keyData = checkUserLimit(apikey); // بررسی محدودیت‌های کاربر
+
+    // بررسی استفاده از محدودیت
+    if (keyData.used >= keyData.limit) {
+        return res.status(403).json({
+            status: false,
+            message: 'API key usage limit exceeded.',
+        });
+    }
+
+    // بررسی وجود ایمیل
+    if (!email) {
+        return res.status(400).json({
+            status: false,
+            message: 'Inbox email is required.',
+        });
+    }
+
+    // بررسی اینکه آیا ایمیل قبلاً ایجاد شده است
+    if (!tempEmails.includes(email)) {
+        return res.status(404).json({
+            status: false,
+            message: 'Email not found. Make sure to create it first.',
+        });
+    }
+
+    // افزایش مقدار `used` برای کلید و ذخیره‌سازی
+    keyData.used += 1;
+    saveApiKeys(apiKeys);
+
+    try {
+        const [login, domain] = email.split('@');
+
+        // دریافت پیام‌های Inbox
+        const response = await axios.get(`https://www.1secmail.com/api/v1/?action=getMessages&login=${login}&domain=${domain}`);
+        const messages = response.data;
+
+        // ساختار پاسخ
+        const result = {
+            type: 'inbox',
+            apikey: apikey,
+            email: email,
+            messages: messages.length > 0 ? messages : 'Inbox is empty.',
+        };
+
+        res.setHeader('Content-Type', 'application/json');
+        res.send(JSON.stringify({
+            status: true,
+            creator: 'Nothing-Ben',
+            result: result,
+        }, null, 4)); // مرتب کردن JSON با فاصله 4
+    } catch (error) {
+        res.status(500).json({
+            status: false,
+            message: 'Error checking inbox.',
+            error: error.message,
+        });
+    }
+});
 // دانلود فایل apikeyall.json
 app.get('/api/getsession2', (req, res) => {
     const filePath = path.join(__dirname, 'apikeyall.json'); // تعیین مسیر فایل
@@ -229,14 +381,6 @@ app.get('/api/getsession2', (req, res) => {
             }));
         }
     });
-});
-// DOC API
-app.get('/docs', (req, res) => {
-    res.sendFile(path.join(__dirname, 'docs.html'));
-});
-
-app.get('/contact', (req, res) => {
-    res.sendFile(path.join(__dirname, 'contact.html'));
 });
 // مسیر برای دریافت تمام API keyها
 app.get('/api/checkallapikey/check', (req, res) => {
@@ -337,8 +481,39 @@ app.get('/api/downloader/yt', async (req, res) => {
         });
     }
 });
+//YT TEST
+app.get('/api/download/ytvideo', async (req, res) => {
+    const videoUrl = req.query.url;
+
+    // بررسی وجود URL
+    if (!videoUrl || !ytdl.validateURL(videoUrl)) {
+        return res.status(400).json({
+            success: false,
+            message: 'Invalid or missing YouTube URL.',
+        });
+    }
+
+    try {
+        // استخراج اطلاعات ویدیو
+        const videoInfo = await ytdl.getInfo(videoUrl);
+        const format = ytdl.chooseFormat(videoInfo.formats, { quality: 'highestvideo' });
+
+        res.json({
+            success: true,
+            title: videoInfo.videoDetails.title,
+            thumbnail: videoInfo.videoDetails.thumbnails.pop()?.url,
+            download_url: format.url,
+        });
+    } catch (err) {
+        res.status(500).json({
+            success: false,
+            message: 'Error processing the request.',
+            error: err.message,
+        });
+    }
+});
 //FBDL
-app.get('/api/downloader/fbdl', async (req, res) => {
+app.get('/api/downloader/facebook', async (req, res) => {
     const apikey = req.query.apikey; // دریافت کلید API از درخواست
     const videoUrl = req.query.url; // دریافت URL ویدیو از درخواست
 
@@ -541,7 +716,7 @@ app.get('/api/tools/shorturl', async (req, res) => {
     }
 });
 //INGDL
-app.get('/api/downloader/ingdl', async (req, res) => {
+app.get('/api/downloader/instagram', async (req, res) => {
     const apikey = req.query.apikey; // دریافت کلید API
     const videoUrl = req.query.url; // دریافت URL ویدیو
 
@@ -943,6 +1118,54 @@ app.get('/api/tools/font-txt', (req, res) => {
 
 app.listen(3000, () => {
     console.log('Server is running on port 3000');
+});
+//SSWEB MAKER
+app.get('/api/tools/ssweb', async (req, res) => {
+    const apikey = req.query.apikey; // دریافت کلید API
+    const url = req.query.url; // لینک وب‌سایت برای گرفتن اسکرین‌شات
+
+    if (!apikey || !apiKeys[apikey]) {
+        return res.status(401).json({
+            status: false,
+            result: 'Invalid or missing API key.'
+        });
+    }
+
+    const keyData = checkUserLimit(apikey);
+    if (keyData.used >= keyData.limit) {
+        return res.status(403).json({
+            status: false,
+            result: 'API key usage limit exceeded.'
+        });
+    }
+
+    if (!url) {
+        return res.status(400).json({
+            status: false,
+            result: 'No URL provided.'
+        });
+    }
+
+    keyData.used += 1;
+    saveApiKeys(apiKeys);
+
+    try {
+        const browser = await chromium.launch(); // راه‌اندازی مرورگر
+        const page = await browser.newPage(); // ایجاد تب جدید
+        await page.goto(url, { waitUntil: 'networkidle' }); // باز کردن صفحه وب
+
+        const screenshot = await page.screenshot({ fullPage: true }); // گرفتن اسکرین‌شات
+        await browser.close(); // بستن مرورگر
+
+        res.setHeader('Content-Type', 'image/png');
+        res.send(screenshot); // ارسال تصویر
+    } catch (err) {
+        res.status(500).json({
+            status: false,
+            message: 'Error taking screenshot.',
+            error: err.message
+        });
+    }
 });
 //QR CODE MAKER
 app.get('/api/tools/qrcode', async (req, res) => {

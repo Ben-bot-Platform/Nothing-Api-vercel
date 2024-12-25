@@ -2,11 +2,11 @@
 <html lang="en">
   <head>
     <meta charset="utf-8">
-    <title>NOTHING | Docs</title>
+    <title>BK9 | Docs</title>
     <meta content="width=device-width,initial-scale=1" name="viewport">
     <meta content name="keywords">
-    <meta content="NOTHING Rest Api For Developers..." name="description">
-    <link href="https://files.catbox.moe/4i7dp7.jpg" rel="icon">
+    <meta content="Jeje Rest Api For Developers..." name="description">
+    <link href="img/Siraj-jeje.png" rel="icon">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Roboto:wght@500;700&display=swap" rel="stylesheet">
@@ -18,7 +18,7 @@
     <link href="https://files.catbox.moe/gxopo6.css" rel="stylesheet">
     <link href="https://files.catbox.moe/4q9hhp.css" rel="stylesheet">
   </head>
-  <body> 
+  <body>
 
 <!----------------------------------------------------------------------------------------------->
 
@@ -75,189 +75,134 @@
 
 <!----------------------------------------------------------------------------------------------->
 
-    <div class="content">
-      <nav class="navbar navbar-expand bg-secondary navbar-dark sticky-top px-4 py-0">
-        <a href="index.html#" class="sidebar-toggler flex-shrink-0">
-          <i class="fa fa-bars"></i>
-        </a>
-        <div class="navbar-nav align-items-center ms-auto">
-        </div>
-      </nav>
-      <div class="container-fluid pt-4 px-4">
-        <div class="row g-4">
-          <div class="col-sm-6 col-xl-6">
-            <div class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
-              <i class="bi bi-eye fa-3x text-primary"></i>
-              <div class="ms-3">
-                <p class="mb-2 text-primary">Total Visitors</p>
-                <h6 class="mb-0 text-end" id="visitor">Loading...</h6>
-                <script>
-                  setInterval(function() {
-                  var xhr = new XMLHttpRequest();
-                  xhr.open("GET", "https://bk9.fun/visit");
-                  xhr.responseType = "json";
-                  xhr.onload = () => document.getElementById('visitor').innerText = '' + xhr.response.visitors + '';
-                  xhr.send()
-              }, 1000);
-              </script>
-              </div>
-            </div>
-          </div>
+              <div class="content">
+                <nav class="navbar navbar-expand bg-secondary navbar-dark sticky-top px-4 py-0">
+                  <a href="tools.html#" class="sidebar-toggler flex-shrink-0">
+                    <i class="fa fa-bars"></i>
+                  </a>
+                  <div class="navbar-nav align-items-center ms-auto">
+                  </div>
+                </nav>
+         <div class="container-fluid pt-4 px-4">
+            <div class="bg-secondary text-center rounded p-4">
+               <div class="d-flex align-items-center justify-content-between mb-4">
+                  <h6 class="mb-0"><i class="bi bi-activity text-primary me-2"></i>Tools Features</h6>
+                  <a "https://bk9.fun/href"></a>
+               </div>
 
 <!----------------------------------------------------------------------------------------------->
 
-          <div class="col-sm-6 col-xl-6">
-            <div class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
-              <i class="bi bi-calendar-week fa-3x text-primary"></i>
-              <div class="ms-3">
-                <p class="mb-2 text-primary">Total Request </p>
-                <h6 class="mb-0 text-end" id="visitortdy">Loading...</h6>
-                <script>
-                  setInterval(function() {
-                  var xhr = new XMLHttpRequest();
-                  xhr.open("GET", "https://bk9.fun/count");
-                  xhr.responseType = "json";
-                  xhr.onload = () => document.getElementById('visitortdy').innerText = '' + xhr.response.visitor_count + '';
-                  xhr.send()
-              }, 1000);
-              </script>
-              </div>
-            </div>
-          </div>
+               <div class="table-responsive text-nowrap">
+                  <table class="table text-start align-middle table-bordered table-hover mb-0">
+                     <thead>
+                        <tr class="text-center text-white">
+                           <th scope="col">#</th>
+                           <th scope="col">Name</th>
+                           <th scope="col">Type</th>
+                           <th scope="col">Description</th>
+                           <th scope="col">Parameter</th>
+                           <th scope="col">Status</th>
+                           <th scope="col">Actions</th>
+                        </tr>
+                     </thead>
 
 <!----------------------------------------------------------------------------------------------->
 
-          <div class="col-sm-6 col-xl-6">
-            <div class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
-              <i class="bi bi-clock fa-3x text-primary"></i>
-              <div class="ms-3">
-                <p class="mb-2 text-primary">ㅤㅤㅤㅤㅤㅤㅤㅤㅤRuntime</p>
-                <h6 class="mb-0 text-end" id="runtime">Loading...</h6>
-                <script>
-                  setInterval(function() {
-                  var xhr = new XMLHttpRequest();
-                  xhr.open("GET", "https://bk9.fun/status");
-                  xhr.responseType = "json";
-                  xhr.onload = () => document.getElementById('runtime').innerText = '' + xhr.response.runtime + '';
-                  xhr.send()
-              }, 1000);
-              </script>
-              </div>
-            </div>
-          </div>
+                     <tbody class>
+                         <tr>
+                           <th scope="row"></th>
+                           <td>Apikey Checker</td>
+                           <td>Json</td>
+                           <td>Check apikey limit and data</td>
+                           <td>apikey</td>
+                           <td><button type="button" class="btn btn-sm btn-success">Active</button></td>
+                           <td><a class="btn btn-sm btn-primary text-white" href="../api/checker?apikey=nothing-ben" target="_blank">Check</a></td>
+                        </tr>
+
+                         <th scope="row"></th>
+                            <td>Create Qr</td>
+                            <td>Buffer</td>
+                            <td>Text To Qrcode</td>
+                            <td>q & apikey</td>
+                            <td><button type="button" class="btn btn-sm btn-success">Active</button></td>
+                            <td><a class="btn btn-sm btn-primary text-white" href="../api/tools/qrcode?text=Hello&apikey=nothing-ben" target="_blank">Check</a></td>
+                         </tr>
+
+                         <th scope="row"></th>
+                            <td>Fancy Text</td>
+                            <td>Get</td>
+                            <td>Best text font funcy font</td>
+                            <td>q & apikey</td>
+                            <td><button type="button" class="btn btn-sm btn-success">Active</button></td>
+                            <td><a class="btn btn-sm btn-primary text-white" href="../https://nothing-endpoint-e82e9f07ad78.herokuapp.com/api/tools/font-txt?text=Hello&apikey=nothing-ben" target="_blank">Check</a></td>
+                         </tr>
+
+                         <th scope="row"></th>
+                            <td>Full Ssweb</td>
+                            <td>Get</td>
+                            <td>Web to screenshot</td>
+                            <td>url & apikey</td>
+                            <td><button type="button" class="btn btn-sm btn-success">Active</button></td>
+                            <td><a class="btn btn-sm btn-primary text-white" href="../api/tools/ssweb?url=https://nothing-endpoint-e82e9f07ad78.herokuapp.com&apikey=nothing-ben" target="_blank">Check</a></td>
+                         </tr>
+
+                         <th scope="row"></th>
+                            <td>Tinyurl</td>
+                            <td>Get</td>
+                            <td>Url to Shorturl Tinyurl</td>
+                            <td>url & apikey</td>
+                            <td><button type="button" class="btn btn-sm btn-success">Active</button></td>
+                            <td><a class="btn btn-sm btn-primary text-white" href="../api/tools/tinyurl?url=https://nothing-endpoint-e82e9f07ad78.herokuapp.com&apikey=nothing-ben" target="_blank">Check</a></td>
+                         </tr>
+
+                         <th scope="row"></th>
+                            <td>Shorturl</td>
+                            <td>Get</td>
+                            <td>Url to Shorturl Short</td>
+                            <td>url & apikey</td>
+                            <td><button type="button" class="btn btn-sm btn-success">Active</button></td>
+                            <td><a class="btn btn-sm btn-primary text-white" href="../api/tools/shorturl?url=https://nothing-endpoint-e82e9f07ad78.herokuapp.com&apikey=nothing-ben" target="_blank">Check</a></td>
+                         </tr>
+
+                         <tr>
+                        <th scope="row"></th>
+                            <td>Temp Mail</td>
+                            <td>Json</td>
+                            <td>Genarate Temp Mails</td>
+                            <td>- & apikey</td>
+                            <td><button type="button" class="btn btn-sm btn-success">Active</button></td>
+                            <td><a class="btn btn-sm btn-primary text-white" href="../api/tools/tempmail" target="_blank">Check</a></td>
+                         </tr>
+                         <tr>
+                        <th scope="row"></th>
+                            <td>Temp Mail Inbox</td>
+                            <td>Json</td>
+                            <td>Get Temp Mail Inbox Emails</td>
+                            <td>email & apikey</td>
+                            <td><button type="button" class="btn btn-sm btn-success">Active</button></td>
+                            <td><a class="btn btn-sm btn-primary text-white" href="../api/tools/tempmail?inbox=email&apikey=nothing-ben" target="_blank">Check</a></td>
+                         </tr>
+
+                     </tbody>
 
 <!----------------------------------------------------------------------------------------------->
 
-          <div class="col-sm-6 col-xl-6">
-            <div class="bg-secondary rounded d-flex align-items-center justify-content-between p-4">
-              <i class="bi bi-memory fa-3x text-primary"></i>
-              <div class="ms-3">
-                <p class="mb-2 text-primary">ㅤㅤㅤㅤㅤㅤㅤㅤㅤUsage</p>
-                <h6 class="mb-0 text-end" id="memory">Loading...</h6>
-                <script>
-                  setInterval(function() {
-                  var xhr = new XMLHttpRequest();
-                  xhr.open("GET", "https://bk9.fun/status");
-                  xhr.responseType = "json";
-                  xhr.onload = () => document.getElementById('memory').innerText = '' + xhr.response.memory + '';
-                  xhr.send()
-              }, 1000);
-              </script>
-              </div>
+                  </table>
+               </div>
             </div>
-          </div>
-
-<!----------------------------------------------------------------------------------------------->
-
-        </div>
+         </div>
+         <div class="container-fluid pt-4 px-4">
+            <div class="bg-secondary rounded-top p-4">
+               <div class="row">
+                  <div class="col-12 col-sm-6 text-center text-sm-start">2024 © NOTHING APIS</div>
+               </div>
+            </div>
+         </div>
       </div>
-      <div class="container-fluid pt-4 px-4">
-        <div class="row g-4">
-          <div class="col-sm-12 col-xl-6">
-            <div class="bg-secondary rounded h-100 p-4">
-              <div class="d-flex align-items-center justify-content-between mb-2">
-                <h6 class="mb-0"><i class="bx bx-news text-primary me-2"></i>Lastest Updates Note</h6>
-                <a href="../changelog">Show All</a>
-            </div>
-              <ul class="list-unstyled mb-0">
-                <li>
-                  <ul>
-                  <ul>
-                	<li>2024-12-20: Added Ytmp4 and Ytmp3</li>
-                    <li>2024-12-10: Added Tempmail and Tempmail inbox</li>
-                    <li>2024-10-29: Added Qrcode and Tinyurl</li>
-                    <li>2024-09-28: Added Ssweb and Funcy text</li>
-                    <li>2024-06-04: Added Shorturl and YouTube search</li>
-                    <li>2024-05-02: Website creation</li>
-                  </ul>
-                </li>
-              </ul>
-            </div>
-          </div>
-          </div>
-      </div>
-      <div class="container-fluid pt-4 px-4">
-        <div class="row g-4">
-          <div class="col-sm-12 col-xl-6">
-            <div class="bg-secondary rounded h-100 p-4">
-              <div class="d-flex align-items-center justify-content-between mb-2">
-                <h6 class="mb-0"><i class="bx bx-news text-primary me-2"></i>FREE APIKEY</h6>
-            </div>
-              <ul class="list-unstyled mb-0">
-                <li>
-                  <ul>
-                  <ul>
-                	<li>FREE APIKEY IS : nothing-ben</li>
-                  </ul>
-                </li>
-              </ul>
-            </div>
-          </div>
-          <div class="col-sm-12 col-xl-6">
-            <div class="bg-secondary rounded h-100 p-4">
-              <div class="bg-secondary rounded h-100 p-4">
-                <h6 class="mb-4"><i class="bi bi-clipboard-check-fill me-2"></i>Contact Nothing</h6>
-                  <div class="wa">
-                  <a href="../contact" target="_blank">
-                    <i class="bi bi-github me-2"></i>
-                    Contact page
-                  </a>
-                </div>
-                  <div class="wa">
-                  <a href="https://whatsapp.com/channel/0029Vasu3qP9RZAUkVkvSv32" target="_blank">
-                    <i class="bi bi-whatsapp me-2"></i>
-                    Whatsapp channel
-                  </a>
-                </div>
-                <div class="wa">
-                  <a href="https://github.com/TraderAn-King" target="_blank">
-                    <i class="bi bi-github me-2"></i>
-                    Github profile
-                  </a>
-                </div>
-                <div class="wa">
-                  <a href="https://t.me/Aloneboyabn" target="_blank">
-                    <i class="bi bi-github me-2"></i>
-                    Telegram profile
-                  </a>
-                </div>
-              </div>
-          </div>
-        </div>
-      <div class="container-fluid pt-4 px-4">
-  <div class="bg-secondary rounded-top p-4">
-    <div class="row">
-      <div class="col-12 col-sm-6 text-center text-sm-start">
-        2024 © NOTHING APIS
-      </div>
-    </div>
-  </div>
-</div>
-    </div>
-    
+
 <!----------------------------------------------------------------------------------------------->
 
-    <head>
+      <head>
   <!-- اضافه کردن لینک Font Awesome برای آیکن -->
   <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css" rel="stylesheet">
   <style>
@@ -357,3 +302,5 @@
   </script>
 </body>
 </html>
+
+  <!----------------------------------------------------------------------------------------------->
