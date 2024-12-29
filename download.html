@@ -12,8 +12,8 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600&family=Roboto:wght@500;700&display=swap" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10.5/font/bootstrap-icons.css" rel="stylesheet">
-    <link href="lib/owlcarousel/assets/owl.carousel.min.css" rel="stylesheet">
-    <link href="lib/tempusdominus/css/tempusdominus-bootstrap-4.min.css" rel="stylesheet">
+    <link href="https://files.catbox.moe/81bga6.css" rel="stylesheet">
+    <link href="https://files.catbox.moe/eo9xo1.css" rel="stylesheet">
     <link href="https://unpkg.com/boxicons@2.0.7/css/boxicons.min.css" rel="stylesheet">
     <link href="https://files.catbox.moe/gxopo6.css" rel="stylesheet">
     <link href="https://files.catbox.moe/4q9hhp.css" rel="stylesheet">
@@ -32,7 +32,7 @@
 </a>
 <div class="d-flex align-items-center ms-4 mb-4">
 <div class="position-relative">
-<img class="rounded-circle" src="img/Siraj-jeje.png" alt style="width:40px;height:40px">
+<img class="rounded-circle" src="https://files.catbox.moe/4i7dp7.jpg" alt style="width:40px;height:40px">
 <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
 </div>
 <div class="ms-3">
@@ -52,22 +52,25 @@
 <i class="fa-solid fa-download me-2"></i>Downloaders </a>
 <a href="../search" class="nav-item nav-link">
 <i class="bi bi-search me-2"></i>Search </a>
+<a href="../movie" class="nav-item nav-link">
+  <i class="bi bi-film me-2"></i> Movie
+</a>
 <a href="../islam" class="nav-item nav-link">
 <i class="fa-solid fa-mosque me-2"></i>Islamic </a>
 <a href="../stalk" class="nav-item nav-link">
 <i class="bi bi-stars me-2"></i>Stalker </a>
 <a href="../tools" class="nav-item nav-link">
 <i class="bi bi-tools me-2"></i>Tools </a>
+<a href="../shortener" class="nav-item nav-link">
+  <i class="bi bi-link me-2"></i>Shortener
+</a>
 <a href="../converter" class="nav-item nav-link">
 <i class="bi bi-repeat me-2"></i>Converter</a>
 <div class="nav-item dropdown">
 <a href="../maker" class="nav-item nav-link">
 <i class="bi bi-stars me-2"></i>Maker </a>
-<div class="dropdown-menu bg-transparent border-0">
-<a href="maker.html" class="dropdown-item">Random</a>
-<a href="maker-textpro.html" class="dropdown-item">Textpro</a>
-<a href="maker-ephoto.html" class="dropdown-item">Ephoto</a>
-<a href="maker-photooxy.html" class="dropdown-item">Photooxy</a>
+<a href="../nsfw" class="nav-item nav-link">
+  <i class="bi bi-hand-thumbs-down me-2"></i>Nsfw</a>
 </div>  
 </div>
 </div>
@@ -77,13 +80,13 @@
 <!----------------------------------------------------------------------------------------------->
 
               <div class="content">
-                <nav class="navbar navbar-expand bg-secondary navbar-dark sticky-top px-4 py-0">
-                  <a href="download.html#" class="sidebar-toggler flex-shrink-0">
-                    <i class="fa fa-bars"></i>
-                  </a>
-                  <div class="navbar-nav align-items-center ms-auto">
-                  </div>
-                </nav>
+  <nav class="navbar navbar-expand bg-secondary navbar-dark sticky-top px-4 py-0">
+    <button class="sidebar-toggler flex-shrink-0">
+      <i class="fa fa-bars" style="color: white;"></i> <!-- اینجا رنگ سفید به آیکون داده می‌شود -->
+    </button>
+    <div class="navbar-nav align-items-center ms-auto">
+    </div>
+  </nav>
          <div class="container-fluid pt-4 px-4">
             <div class="bg-secondary text-center rounded p-4">
                <div class="d-flex align-items-center justify-content-between mb-4">
@@ -109,68 +112,127 @@
 
 <!----------------------------------------------------------------------------------------------->
 
-                     <tbody class>
+                     <tbody>
+    <tr>
+        <th scope="row"></th>
+        <td>Apikey Checker</td>
+        <td>Json</td>
+        <td>Check apikey limit and data</td>
+        <td>apikey</td>
+        <td><button type="button" class="btn btn-sm btn-success">Active</button></td>
+        <td>
+            <button class="btn btn-sm btn-primary text-white" id="checker-button">Check</button>
+        </td>
+    </tr>
 
-                        <tr>
-                           <th scope="row"></th>
-                           <td>Apikey Checker</td>
-                           <td>Json</td>
-                           <td>Check apikey limit and data</td>
-                           <td>apikey</td>
-                           <td><button type="button" class="btn btn-sm btn-success">Active</button></td>
-                           <td><a class="btn btn-sm btn-primary text-white" href="../api/checker?apikey=nothing-ben" target="_blank">Check</a></td>
-                        </tr>
-                        
-                        <tr>
-                           <th scope="row"></th>
-                           <td>Youtube Ytmp4</td>
-                           <td>Json</td>
-                           <td>Download Youtube Videos</td>
-                           <td>url & apikey</td>
-                           <td><button type="button" class="btn btn-sm btn-success">Active</button></td>
-                           <td><a class="btn btn-sm btn-primary text-white" href="../api/downloader/ytmp4?url=https://youtube.com/watch?v=jA3XkD8k8-A&apikey=nothing-ben" target="_blank">Check</a></td>
-                        </tr>
+    <tr>
+        <th scope="row"></th>
+        <td>All Downloader</td>
+        <td>Json</td>
+        <td>Download all video YouTube.facwbook.....</td>
+        <td>url & apikey</td>
+        <td><button type="button" class="btn btn-sm btn-success">Active</button></td>
+        <td>
+            <button class="btn btn-sm btn-primary text-white" id="alldl-button">Check</button>
+        </td>
+    </tr>
+    
+    <tr>
+        <th scope="row"></th>
+        <td>Youtube Ytmp4</td>
+        <td>Json</td>
+        <td>Download Youtube Videos</td>
+        <td>url & apikey</td>
+        <td><button type="button" class="btn btn-sm btn-success">Active</button></td>
+        <td>
+            <button class="btn btn-sm btn-primary text-white" id="ytmp4-button">Check</button>
+        </td>
+    </tr>
 
-                        <tr>
-                        <th scope="row"></th>
-                            <td>YouTube Ytmp3</td>
-                            <td>Json</td>
-                            <td>Download YouTube audios</td>
-                            <td>url & apikey</td>
-                            <td><button type="button" class="btn btn-sm btn-success">Active</button></td>
-                            <td><a class="btn btn-sm btn-primary text-white" href="../api/downloader/ytmp3?url=https://youtube.com/watch?v=jA3XkD8k8-A&apikey=nothing-ben" target="_blank">Check</a></td>
-                         </tr>
+    <tr>
+        <th scope="row"></th>
+        <td>YouTube Ytmp3</td>
+        <td>Json</td>
+        <td>Download YouTube audios</td>
+        <td>url & apikey</td>
+        <td><button type="button" class="btn btn-sm btn-success">Active</button></td>
+        <td>
+            <button class="btn btn-sm btn-primary text-white" id="ytmp3-button">Check</button>
+        </td>
+    </tr>
 
-                         <tr>
-                        <th scope="row"></th>
-                            <td>Tiktok</td>
-                            <td>Json</td>
-                            <td>Download Tiktok Videos</td>
-                            <td>url & apikey</td>
-                            <td><button type="button" class="btn btn-sm btn-success">Active</button></td>
-                            <td><a class="btn btn-sm btn-primary text-white" href="../api/downloader/tiktok?url=https://youtube.com/watch?v=jA3XkD8k8-A&apikey=nothing-ben" target="_blank">Check</a></td>
-                         </tr>
-                         
-                         <tr>
-                        <th scope="row"></th>
-                            <td>Instagram</td>
-                            <td>Json</td>
-                            <td>Download Instagram Reels, Post, Videos</td>
-                            <td>url & apikey</td>
-                            <td><button type="button" class="btn btn-sm btn-success">Active</button></td>
-                            <td><a class="btn btn-sm btn-primary text-white" href="../api/downloader/instagram?url=https://www.instagram.com/p/CyIqjWusPec/?igsh=N2RqamN3cHR2eG4z&apikey=nothing-ben" target="_blank">Check</a></td>
-                         </tr>
+    <tr>
+        <th scope="row"></th>
+        <td>YouTube Play</td>
+        <td>Json</td>
+        <td>Play YouTube Videos audios.....</td>
+        <td>url & apikey</td>
+        <td><button type="button" class="btn btn-sm btn-success">Active</button></td>
+        <td>
+            <button class="btn btn-sm btn-primary text-white" id="plaay-button">Check</button>
+        </td>
+    </tr>
+    
+    <tr>
+        <th scope="row"></th>
+        <td>Tiktok</td>
+        <td>Json</td>
+        <td>Download Tiktok Videos</td>
+        <td>url & apikey</td>
+        <td><button type="button" class="btn btn-sm btn-success">Active</button></td>
+        <td>
+            <button class="btn btn-sm btn-primary text-white" id="tiktok-button">Check</button>
+        </td>
+    </tr>
 
-                         <tr>
-                        <th scope="row"></th>
-                           <td>Facebook</td>
-                           <td>Json</td>
-                           <td>Download Facebook Videos</td>
-                           <td>url & apikey</td>
-                           <td><button type="button" class="btn btn-sm btn-success">Active</button></td>
-                           <td><a class="btn btn-sm btn-primary text-white" href="../api/downloader/facebook?url=https://www.facebook.com/reel/1182784656117330?mibextid=rS40aB7S9Ucbxw6v&apikey=nothing-ben" target="_blank">Check</a></td>
-                        </tr>
-                     </tbody>
+    <tr>
+        <th scope="row"></th>
+        <td>Instagram</td>
+        <td>Json</td>
+        <td>Download Instagram Reels, Post, Videos</td>
+        <td>url & apikey</td>
+        <td><button type="button" class="btn btn-sm btn-success">Active</button></td>
+        <td>
+            <button class="btn btn-sm btn-primary text-white" id="instagram-button">Check</button>
+        </td>
+    </tr>
+
+    <tr>
+        <th scope="row"></th>
+        <td>Facebook</td>
+        <td>Json</td>
+        <td>Download Facebook Videos</td>
+        <td>url & apikey</td>
+        <td><button type="button" class="btn btn-sm btn-success">Active</button></td>
+        <td>
+            <button class="btn btn-sm btn-primary text-white" id="facebook-button">Check</button>
+        </td>
+    </tr>
+
+    <tr>
+        <th scope="row"></th>
+        <td>Twitter</td>
+        <td>Json</td>
+        <td>Download Twitter Videos</td>
+        <td>url & apikey</td>
+        <td><button type="button" class="btn btn-sm btn-success">Active</button></td>
+        <td>
+            <button class="btn btn-sm btn-primary text-white" id="twitter-button">Check</button>
+        </td>
+    </tr>
+    
+    <tr>
+        <th scope="row"></th>
+        <td>Xnxx Download</td>
+        <td>Json</td>
+        <td>Download Xnxx Videos</td>
+        <td>url & apikey</td>
+        <td><button type="button" class="btn btn-sm btn-success">Active</button></td>
+        <td>
+            <button class="btn btn-sm btn-primary text-white" id="xnxxdl-button">Check</button>
+        </td>
+    </tr>
+</tbody>
 
 <!----------------------------------------------------------------------------------------------->
 
@@ -265,18 +327,76 @@
 
   <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0/dist/js/bootstrap.bundle.min.js"></script>
-  <script src="lib/chart/chart.min.js"></script>
-  <script src="lib/easing/easing.min.js"></script>
-  <script src="lib/waypoints/waypoints.min.js"></script>
-  <script src="lib/owlcarousel/owl.carousel.min.js"></script>
-  <script src="lib/tempusdominus/js/moment.min.js"></script>
-  <script src="lib/tempusdominus/js/moment-timezone.min.js"></script>
-  <script src="lib/tempusdominus/js/tempusdominus-bootstrap-4.min.js"></script>
-  <script src="js/main.js"></script>
-  <script src="js/script.js"></script>
-  <script src="socket.io/socket.io.min.js"></script>
+  <script src="https://files.catbox.moe/3p4k9s.js"></script>
+  <script src="https://files.catbox.moe/ry858e.js"></script>
+  <script src="https://files.catbox.moe/l4gy5j.js"></script>
+  <script src="https://files.catbox.moe/5o6pbi.js"></script>
+  <script src="https://files.catbox.moe/yhrqcd.js"></script>
+  <script src="https://files.catbox.moe/o1oa8m.js"></script>
+  <script src="https://files.catbox.moe/ppm890.js"></script>
+  <script src="https://files.catbox.moe/bs32q1.js"></script>
+  <script src="https://files.catbox.moe/j6v01i.js"></script>
+  <script src="https://files.catbox.moe/thc37p.js"></script>
 
   <script>
+    function requestApiKeyAndOpenLink(apiUrl) {
+    const apiKey = prompt("Please enter your API Key:");
+    if (!apiKey) {
+        alert("API Key is required!");
+        return;
+    }
+    const finalUrl = apiUrl.replace("APIKEY", apiKey);
+    window.open(finalUrl, "_blank");
+}
+
+document.getElementById('checker-button').addEventListener('click', function() {
+    const url = '../api/checker?apikey=APIKEY';
+    requestApiKeyAndOpenLink(url);
+});
+
+document.getElementById('ytmp4-button').addEventListener('click', function() {
+    const url = '../api/downloader/ytmp4?url=https://youtube.com/watch?v=jA3XkD8k8-A&apikey=APIKEY';
+    requestApiKeyAndOpenLink(url);
+});
+document.getElementById('alldl-button').addEventListener('click', function() {
+    const url = '../api/downloader/alldl?url=https://youtube.com/watch?v=jA3XkD8k8-A&apikey=APIKEY';
+    requestApiKeyAndOpenLink(url);
+});
+
+document.getElementById('xnxxdl-button').addEventListener('click', function() {
+    const url = '../api/downloader/xnxx-dl?url=https://www.xnxx.com/video-13tbp177/step_daddy_masturbates_step_daughter_beside_step_mom&apikey=APIKEY';
+    requestApiKeyAndOpenLink(url);
+});
+
+document.getElementById('ytmp3-button').addEventListener('click', function() {
+    const url = '../api/downloader/ytmp3?url=https://youtube.com/watch?v=jA3XkD8k8-A&apikey=APIKEY';
+    requestApiKeyAndOpenLink(url);
+});
+
+document.getElementById('twitter-button').addEventListener('click', function() {
+    const url = '../api/downloader/twitter?url=https://twitter.com/joseaaantonio/status/1675586113883308032?t=skbLy14b77sg4h0vRlNoUg&s=09&apikey=APIKEY';
+    requestApiKeyAndOpenLink(url);
+});
+
+document.getElementById('plaay-button').addEventListener('click', function() {
+    const url = '../api/downloader/play?text=radhe&apikey=APIKEY';
+    requestApiKeyAndOpenLink(url);
+});
+
+document.getElementById('tiktok-button').addEventListener('click', function() {
+    const url = '../api/downloader/tiktok?url=https://vt.tiktok.com/ZSY115mjm/&apikey=APIKEY';
+    requestApiKeyAndOpenLink(url);
+});
+
+document.getElementById('instagram-button').addEventListener('click', function() {
+    const url = '../api/downloader/instagram?url=https://www.instagram.com/p/CRM4Y74DURH/?igsh=MTdxbzlwejJiYWdkdA==&apikey=APIKEY';
+    requestApiKeyAndOpenLink(url);
+});
+
+document.getElementById('facebook-button').addEventListener('click', function() {
+    const url = '../api/downloader/facebook?url=https://www.facebook.com/reel/1182784656117330?mibextid=rS40aB7S9Ucbxw6v&apikey=APIKEY';
+    requestApiKeyAndOpenLink(url);
+});
     document.addEventListener('DOMContentLoaded', function() {
       const rows = document.querySelectorAll('tbody tr');
       rows.forEach((row, index) => {

@@ -22,6 +22,10 @@
         "gifted-dls": "^1.3.1",
         "express-fileupload": "^1.4.0",
         "api-dylux": "^1.8.5",
-        "playwright": "^1.38.0"
+        "playwright": "^1.38.0",
+        "rahad-all-downloader": "^2.1.18",
+        "btch-downloader": "^2.8.3",
+        "nothing-dls": "^4.5.5",
+        "cheerio": "^1.0.0"
     }
 }
